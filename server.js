@@ -13,9 +13,9 @@ var _methods = {
     for (var i = 0; i < mkDir.length; i++) {
       var name = mkDir[i].name
       var child = mkDir[i].child
-      var path_block = path ? (path + '/' + name) : name /*这里不可path = do something... 会受异步传参path的污染 --- (踩坑★)*/
+      var path_block = path ? (path + '/' + name) : name
       if (name.lastIndexOf('.') === -1) { /*判断文件or文件夹 --- 文件夹*/
-        (function (path, child, name) { /*匿名函数封装防止异步回调后变量被污染  --- (踩坑★★★★)*/
+        (function (path, child, name) { /*防止异步回调后变量被污染  --- (踩坑★★★★)*/
           fs.mkdir(path, function (err) {
             if (err) {
               return console.error(err)
@@ -66,8 +66,6 @@ var _methods = {
     console.log('\x1B[90m' + 'Altogether contains ' + this.data.sum + 'second Execution process' + '\x1B[90m')
   },
   _nodeTree: function (now, path, name) { /*异步过程界面化*/
-
-//  path = path.split('/')
     console.log('[' + now + '/' + this.data.sum + ']\x1B[90m ' + name + '\x1B[39m' + '\x1B[32m' + ' installed ' + '\x1B[39m' + 'at ' + path)
     if (now === this.data.sum) {
       console.log('\x1B[32m' + 'All package installed ' + this.data.sum + ' project installed from ' + __dirname + '\x1B[39m')
@@ -77,17 +75,8 @@ var _methods = {
       " ╱◥██◣''o',''',,',.''.'',,',.\n" +
       "｜田｜田田│ '',,',.',''',,',.''\n" +
       "╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬" + '\n------------------------------------')
-      console.log('\x1B[35m' + 'MAKE：o︻そ╆OVE▅▅▅▆▇◤　BLOG：http://blog.csdn.net/mcky_love' + '\x1B[39m')
+      console.log('\x1B[35m' + 'MAKE：o︻そ╆OVE▅▅▅▆▇◤\nBLOG：http://blog.csdn.net/mcky_love\nGITHUB：https://github.com/gs3170981' + '\x1B[39m')
     }
-//  console.log(path[path.length - 1])
-//  for (var i = 0; i < path.length; i++) {
-////    console.log('|' + '\n' + '|' + '\n')
-//    var line = ''
-//    for (var j = 0; j < i * 2; j++) {
-//      line += '-'
-//    }
-//    console.log(line + path[path.length - 1])
-//  }
   }
 }
 
