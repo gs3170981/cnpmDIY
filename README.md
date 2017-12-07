@@ -17,20 +17,20 @@
 
  1. 只用**一句命令行，一个文件**来搞定项目结构的创建
  2. 执行过程可视化，在cmd命令指示符中显示文件创建的进度
- ![loading](http://img.blog.csdn.net/20171206115757493?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+ ![loading](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4bf7fb171?w=518&h=195&f=png&s=13522)
  3. 需要有生成项目目录的树状图
-![tree](http://img.blog.csdn.net/20171206120030788?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![tree](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4c55cb363?w=247&h=189&f=png&s=3752)
  4. 项目结构任意化
  5. 代码可二次开发性
 
 -------------------
-###需要的工具
+### 需要的工具
 - **node**
 - **cmd（命令指示符）**
 
 -------------------
 
-##打造一个极简的项目结构创建（试水篇）
+## 打造一个极简的项目结构创建（试水篇）
 
 
 ### 步骤一：进入你想要一键生成的文件目录
@@ -62,17 +62,19 @@ ctrl+s保存，在cmd中输入
 回头看一下你的项目结构吧。
 如果不出意外的话，项目结构已经变成了这样
 
-![tree](http://img.blog.csdn.net/20171206115108476?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![tree](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4b763dd18?w=183&h=123&f=png&s=3166)
 
 
 这里不得不佩服fs的强大，以下附上node fs API地址。
+
  http://nodejs.cn/api/fs.html
+ 
  -------------------
 
 ### 步骤三：还没完，还有读取文件以及生成文件
 
 上面已经出现了我们想要的项目结构，不过这需求对我们来说还远远不足，我们还需要创建js文件以及html文件之类呢。
-####1）在该目录下创建index.html
+#### 1）在该目录下创建index.html
   里面写书写以下代码：
 ``` js
 <!DOCTYPE html>
@@ -87,7 +89,7 @@ ctrl+s保存，在cmd中输入
 </html>
 
 ```
-####2）server.js
+#### 2）server.js
 ``` js
 var fs = require("fs")
 
@@ -108,12 +110,12 @@ cmd执行
 >node server
 
 回头看下项目目录，是否多了个indexx.html的文件，如果多了就说明成功了，以上的操作是读取了index.html内的所有文本内容，然后创建了indexx.html的超文本，当然对fs来说，只是修改了后缀名而已。
-![这里写图片描述](http://img.blog.csdn.net/20171206134415994?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4b9202ce9?w=162&h=84&f=png&s=2996)
 
 
  -------------------
 
-##打造一个自定义并包含完善的Catalog、Tree、color、Path的项目结构（进阶篇）
+## 打造一个自定义并包含完善的Catalog、Tree、color、Path的项目结构（进阶篇）
 
   Tips：以下步骤会分步介绍各个阶段的执行过程（最下方含有完整的github项目地址）
 
@@ -173,7 +175,7 @@ var mkDir = [ /*项目结构树一览*/
 ]
 _methods._nodeInit(mkDir)
 ```
-####大致流程如上，这儿有一些技术栈：
+#### 大致流程如上，这儿有一些技术栈：
 
   1、_nodeSum: 多线程异步的情况下，没能很好得知是否全部执行完成，所以采用了该方式(定时器不可取)
 
@@ -215,10 +217,10 @@ _nodeFor: function (mkDir, path) {
   }
 ```
 
-####技术栈：
+#### 技术栈：
 这段代码并不是很难理解，但调试起来确实是费劲，毕竟含有递归+异步的40行复杂代码谁也不能保证一次就能写成功，在node下，无论是debugger还是console.log()在cmd中调试都很难受，这儿推荐个强大的node-debug调试环境，让你在喜欢的**谷歌下调试**
 
-####技术学习or推荐
+#### 技术学习or推荐
 
   node-inspector
 
@@ -234,17 +236,17 @@ _nodeFor: function (mkDir, path) {
 
 >node-inspector
 
-![run](http://img.blog.csdn.net/20171206180806230?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![run](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4be982a2f?w=476&h=72&f=png&s=6479)
 
 3、cmd到你的目录下执行node debug模式
 
 >node --debug-brk server.js
 
-![run](http://img.blog.csdn.net/20171206180923760?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![run](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4b51fbaa7?w=373&h=54&f=png&s=5926)
 
 4、打开谷歌浏览器，在地址栏输入以上显示的地址：http://127.0.0.1:8080/debug?port=5858 就可以进行调试了，成功后会到以下页面，按F8即可执行到你打断点处，如果没打则直接结束。（如果不行请刷新下）
 
-![Debug](http://img.blog.csdn.net/20171206181141344?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![Debug](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4c0e6ed3c?w=873&h=734&f=png&s=146716)
 
  -------------------
 
@@ -277,14 +279,14 @@ _nodeFor: function (mkDir, path) {
     count(arr)
     console.log('\x1B[90m' + 'Altogether contains ' + this.data.sum + 'second Execution process' + '\x1B[90m')
 ```
-####简述：
+#### 简述：
 
 这儿是在异步执行_nodeFor之前就先预解析完了树结构以及总共的执行次数，因为是同步递归思想，只要注意作用域以及避免变量污染即可。
 
-####技术栈：
+#### 技术栈：
 那就是之前提过的，没有一个好的方法可以监听到多线程异步的回调是否全部执行完成，如果有的话请在下方评论并且没有很好看的输出树结构，仍然有些瑕疵。
 
-####技术学习or推荐
+#### 技术学习or推荐
 
   让你的console.log色彩缤纷
 
@@ -371,18 +373,18 @@ _nodeFor: function (mkDir, path) {
   }
 ```
 
-####简述：
+#### 简述：
 
   这儿执行的就是实时显示当前进度以及全部执行完成后的tree与我个人的信息(#^.^#)
 
 实时当前进度：
-![loading](http://img.blog.csdn.net/20171207093819428?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![loading](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4bdc355cf?w=668&h=455&f=png&s=57706)
 
 结束后的tree
-![tree](http://img.blog.csdn.net/20171207093909615?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![tree](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4b91ec2af?w=677&h=458&f=png&s=59661)
 
 与个人信息
-![info](http://img.blog.csdn.net/20171207093948470?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTWNreV9Mb3Zl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![info](https://user-gold-cdn.xitu.io/2017/12/7/1602eea4faacc3ed?w=677&h=458&f=png&s=58942)
 
  -------------------
 
@@ -416,7 +418,7 @@ var mkDir = [
   }
 ]
 ```
-####简述：
+#### 简述：
   
 通俗易懂的格式，不过如注意事项所说，这儿并没有对‘.’下创建文件夹与不执行的地方进行try提示，需要的朋友可自行git修改。
 
